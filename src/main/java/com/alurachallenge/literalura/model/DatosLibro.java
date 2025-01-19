@@ -1,0 +1,24 @@
+package com.alurachallenge.literalura.model;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public record DatosLibro(
+        @JsonAlias("title")String titulo,
+        @JsonAlias("authors") List<DatosAutor> autor,
+        @JsonAlias("languages") List<String> idioma,
+        @JsonAlias("download_count") Double numeroDeDescargas
+) {
+    @Override
+    public String toString() {
+        return "-------- Libro --------" +
+                "Titulo: '" + titulo + '\n' +
+                "Autor: " + autor + '\n' +
+                "Idioma: " + idioma + '\n' +
+                "Numero de descargas: " + numeroDeDescargas + '\n' +
+                "-----------------------";
+    }
+}
